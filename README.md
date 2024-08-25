@@ -34,7 +34,7 @@ Kerentanan ini mempengaruhi versi tertentu dari protokol SMB (Server Message Blo
 
 ## Penggunaan
 
-Jalankan script dengan memberikan alamat IP target sebagai argumen:
+Jalankan script dengan memberikan alamat IP target:
 
 ```bash
 python sincan2.py <target_ip>

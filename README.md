@@ -23,13 +23,13 @@ Kerentanan ini mempengaruhi versi tertentu dari protokol SMB (Server Message Blo
 1. **Clone Repository:**
 
     ```bash
-    git clone https://github.com/username/repository.git
+    git clone https://github.com/Sincan2/Wincok-11-dan-10-BOSD.git
     ```
 
 2. **Arahkan ke direktori proyek:**
 
     ```bash
-    cd repository
+    cd Wincok-11-dan-10-BOSD
     ```
 
 ## Penggunaan
